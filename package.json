@@ -10,8 +10,8 @@
   },
   "homepage": "http://secureth.github.io/wayback",
   "dependencies": {
-    "drizzle": "^1.2.2",
-    "drizzle-react": "^1.1.1",
+    "drizzle": "^1.2.3",
+    "drizzle-react": "^1.2.0",
     "drizzle-react-components": "^1.2.0",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
