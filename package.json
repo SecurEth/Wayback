@@ -5,6 +5,8 @@
     "ganache-cli": "^6.1.6",
     "gh-pages": "^1.2.0",
     "openzeppelin-solidity": "^1.10.0",
+    "reactotron-react-js": "^2.1.1",
+    "reactotron-redux": "^2.1.0",
     "truffle": "^4.1.13",
     "truffle-hdwallet-provider": "^0.0.5"
   },

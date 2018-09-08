@@ -4,6 +4,8 @@ import { Router, Route } from 'react-router'
 import { Drizzle } from "drizzle";
 import { DrizzleContext } from "drizzle-react";
 
+import './ReactotronConfig'
+
 // Layouts
 import App from './App'
 // import { LoadingContainer } from 'drizzle-react-components'
