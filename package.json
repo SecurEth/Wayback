@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "devDependencies": {
     "ganache-cli": "^6.1.6",
+    "gh-pages": "^1.2.0",
     "openzeppelin-solidity": "^1.10.0",
     "truffle": "^4.1.13",
     "truffle-hdwallet-provider": "^0.0.5"
   },
+  "homepage": "http://secureth.github.io/wayback",
   "dependencies": {
     "drizzle": "^1.2.2",
     "drizzle-react": "^1.1.1",
@@ -66,7 +68,9 @@
     "build": "truffle compile && node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "chain": "ganache-cli",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "jest": {
     "collectCoverageFrom": [
