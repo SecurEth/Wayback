@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { DrizzleContext } from 'drizzle-react'
 import { AccountData, ContractData, ContractForm } from 'drizzle-react-components'
 import logo from '../../logo.png'
 
@@ -7,22 +8,39 @@ class Home extends Component {
     return (
       <main className="container">
         <div className="pure-g">
-          <div className="pure-u-1-1 header">
+          {/* <div className="pure-u-1-1 header">
             <img src={logo} alt="drizzle-logo" />
             <h1>Drizzle Examples</h1>
             <p>Examples of how to get started with Drizzle in various situations.</p>
 
             <br/><br/>
-          </div>
+          </div> */}
 
           <div className="pure-u-1-1">
-            <h2>Active Account</h2>
+            {/* <h2>Active Account</h2> */}
             <AccountData accountIndex="0" units="ether" precision="3" />
 
             <br/><br/>
           </div>
 
           <div className="pure-u-1-1">
+            <pre>
+              <DrizzleContext.Consumer>
+                {({ drizzle, drizzleState }) => {
+                  return JSON.stringify(drizzleState, null, 4)
+                }}
+              </DrizzleContext.Consumer>
+            </pre>
+          </div>
+
+
+          <div className="pure-u-1-1">
+            <pre>{JSON.stringify(this.props, null, 4)}</pre>
+          </div>
+
+
+
+          {/* <div className="pure-u-1-1">
             <h2>SimpleStorage</h2>
             <p>This shows a simple ContractData component with no arguments, along with a form to set its value.</p>
             <p><strong>Stored Value</strong>: <ContractData contract="SimpleStorage" method="storedData" /></p>
@@ -40,9 +58,9 @@ class Home extends Component {
             <ContractForm contract="TutorialToken" method="transfer" labels={['To Address', 'Amount to Send']} />
 
             <br/><br/>
-          </div>
+          </div> */}
 
-          <div className="pure-u-1-1">
+          {/* <div className="pure-u-1-1">
             <h2>ComplexStorage</h2>
             <p>Finally this contract shows data types with additional considerations. Note in the code the strings below are converted from bytes to UTF-8 strings and the device data struct is iterated as a list.</p>
             <p><strong>String 1</strong>: <ContractData contract="ComplexStorage" method="string1" toUtf8 /></p>
@@ -50,7 +68,7 @@ class Home extends Component {
             <strong>Single Device Data</strong>: <ContractData contract="ComplexStorage" method="singleDD" />
 
             <br/><br/>
-          </div>
+          </div> */}
         </div>
       </main>
     )
