@@ -3,15 +3,15 @@ pragma solidity ^0.4.24;
 contract Wayback {
 
     mapping(bytes32 => address) projectToOwner;
-    mapping(bytes32 => address) eventTxHashToApproved;
+    mapping(bytes32 => address) SignerAddress;
 
-    event ActionWriteEvent(bytes32 projectId, bytes32 metaData);
-    event ActionWriteApprove(bytes32 projectId, bytes32 metaData);
-    event ActionSign(bytes32 projectId, bytes32 metaData);
+    event ActionAddRecord(bytes32 projectId, bytes32 metaData);
+    event ActionAddRecordAndApprove(bytes32 projectId, bytes32 metaData);
+    event ActionSignRecord(bytes32 projectId, bytes32 metaData);
 
     event Log(string message);
 
-    function writeEvent(
+    function AddRecord(
         bytes32 projectId,
         bytes32 metaData
     )
@@ -20,12 +20,11 @@ contract Wayback {
         if (projectToOwner[projectId] == 0x0) {
             projectToOwner[projectId] = msg.sender;
         }
-//        emit Log("Not owner");
         require(projectToOwner[projectId] == msg.sender);
-        emit ActionWriteEvent(projectId, metaData);
+        emit ActionAddRecord(projectId, metaData);
     }
 
-    function writeAndApprove(
+    function AddRecordAndApprove(
         bytes32 projectId,
         bytes32 metaData,
         bytes32 eventTxHash,
@@ -34,18 +33,18 @@ contract Wayback {
     external
     {
         require(projectToOwner[projectId] == msg.sender);
-        eventTxHashToApproved[eventTxHash] = thirdParty;
-        emit ActionWriteApprove(projectId, metaData);
+        SignerAddress[eventTxHash] = thirdParty;
+        emit ActionAddRecordAndApprove(projectId, metaData);
     }
     
-    function sign(
+    function SignRecord(
         bytes32 projectId,
         bytes32 metaData,
         bytes32 eventTxHash
     )
     external
     {
-        require(eventTxHashToApproved[eventTxHash] == msg.sender,"NotOwner");
-        emit ActionSign(projectId, metaData);
+        require(SignerAddress[eventTxHash] == msg.sender,"NotOwner");
+        emit ActionSignRecord(projectId, metaData);
     }
 }
