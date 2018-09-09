@@ -20,7 +20,7 @@ contract Wayback {
         if (projectToOwner[projectId] == 0x0) {
             projectToOwner[projectId] = msg.sender;
         }
-        require(projectToOwner[projectId] == msg.sender);
+        require(projectToOwner[projectId] == msg.sender, "Only Owwner Error" );
         emit ActionAddRecord(projectId, metaData);
     }
 
