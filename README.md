@@ -1,4 +1,4 @@
-## Wayback - a brief history of a crypto product.
+## Wayback - a brief quality history of a crypto product.
 
 We are all about keeping records. 
 Check out what we made while developing Wayback itself:
